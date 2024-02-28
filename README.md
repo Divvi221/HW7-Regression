@@ -47,3 +47,8 @@ You will need following packages:
 Try tuning the hyperparameters if you find that your model doesn't converge. Too high of a learning rate or too large of a batch size can sometimes cause the model to be unstable (e.g. loss function goes to infinity). If you're interested, scikit-learn also has some built-in [toy datasets](https://scikit-learn.org/stable/datasets/toy_dataset.html) that you can use for testing.
 
 We're applying a pretty simple model to a relatively complex problem here, so you should expect your classifier to perform decently but not amazingly. It's also possible for a given optimization run to get stuck in a local minima depending on the initialization. With that said, if your implementation is correct and you found reasonable hyperparameters, you should almost always at least do better than chance.
+
+## Methods
+* Wrote make_prediction, loss_function, and calculate_gradient functions in logref.py
+* Wrote unit tests for make_prediction, loss_function, calculate_gradient, and test_training in test_logreg.py
+* Ensured that my code outputs appropriate plots through main.py
