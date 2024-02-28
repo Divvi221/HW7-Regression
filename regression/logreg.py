@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 
 # Base class for generic regressor
 # (this is already complete!)
@@ -129,7 +130,9 @@ class LogisticRegressor(BaseRegressor):
         Returns: 
             The predicted labels (y_pred) for given X.
         """
-        pass
+        z = np.dot(X,self.W)
+        y_pred = 1 / (1 + np.exp(-z))
+        return y_pred
     
     def loss_function(self, y_true, y_pred) -> float:
         """
@@ -143,7 +146,9 @@ class LogisticRegressor(BaseRegressor):
         Returns: 
             The mean loss (a single number).
         """
-        pass
+        N = y_true.shape[0]
+        loss = -np.sum(y_true * np.log(y_pred) + (1 - y_true) * np.log(1 - y_pred)) / N
+        return loss
         
     def calculate_gradient(self, y_true, X) -> np.ndarray:
         """
@@ -157,4 +162,9 @@ class LogisticRegressor(BaseRegressor):
         Returns: 
             Vector of gradients.
         """
-        pass
+        N = X.shape[0]
+        y_pred = self.make_prediction(X)
+        gradient = np.dot(X.T, (y_pred - y_true)) / N
+        return gradient
+    
+#model = LogisticRegressor(logreg)
